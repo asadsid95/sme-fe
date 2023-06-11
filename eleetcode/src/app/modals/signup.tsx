@@ -1,8 +1,11 @@
 'use client'
-
+import { initializeApp } from "firebase-admin/app"
 import { useState } from "react"
 
-async function submitFirebase(e) {
+const app = initializeApp();
+
+
+function submitFirebase(e) {
     e.preventDefault()
 
     const readData = new FormData(e.target)
