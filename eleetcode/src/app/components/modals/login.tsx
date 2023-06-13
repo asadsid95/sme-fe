@@ -2,35 +2,26 @@
 
 import { useState } from "react"
 
-
-function submitFirebase(e) {
-    e.preventDefault()
-
-    const readData = new FormData(e.target)
-    console.log(Object.fromEntries(readData.entries()))
-
-}
-
-export default function Signup() {
-
-    const [name, setName] = useState('')
+export default function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
+    const submitLogin = ((e) => {
+        console.log(e)
+        e.preventDefault()
+    })
+
     return <>
+
         <div className="z-10 w-full h-screen flex items-center justify-center absolute top-0 left-0 bg-black bg-opacity-25">
             <div className="w-1/5 h-2/5  bg-gradient-to-b from-dark-yellow to-dark-gray-7 rounded-lg  ">
-                <form className="flex flex-col h-full justify-between p-5 content-center" onSubmit={submitFirebase}>
+                <form className="flex flex-col h-full justify-between p-5 content-center" onSubmit={submitLogin}>
                     {/* <div> */}
-                    <h4>Sign up for Eleetcode account</h4>
+                    <h4>Log in to your Eleetcode account</h4>
                     {/* </div> */}
                     <div className="flex items-center justify-end">
                         <button type='button'>X</button>
                     </div>
-                    {/* <div> */}
-                    <label>Full Name</label>
-                    <input name='name' value={name} className="bg-grey-400" onChange={e => { setName(e.target.value) }} />
-                    {/* </div> */}
                     {/* <div> */}
                     <label>Email</label>
                     <input name='email' value={email} onChange={e => setEmail(e.target.value)} />
@@ -41,15 +32,16 @@ export default function Signup() {
                     {/* </div> */}
                     {/* <div> */}
                     <div className="text-xs">
-                        <p>Alreadyhave an account? <a href="/" className="font-bold">Log in here</a></p>
+                        <p>Forgot you password?{''}<a href="/" className="font-bold">Recover quick</a></p>
                     </div>
 
-                    <button className="bg-gray-200 rounded-md border-solid border-gray-400 border-2" type="submit">Register</button>
+                    <button className="bg-gray-200 rounded-md border-solid border-gray-400 border-2" type="submit">
+                        Log in
+                    </button>
                     {/* </div> */}
 
                 </form>
             </div>
         </div>
     </>
-
 }

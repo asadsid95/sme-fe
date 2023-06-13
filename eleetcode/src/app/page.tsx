@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Navbar from "./components/landing/Navbar";
 import Signup from "./components/modals/signup";
+Login
 
 export default function home() {
     return <>
