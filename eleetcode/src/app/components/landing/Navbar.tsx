@@ -4,16 +4,27 @@ import React, { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import Signup from "../modals/signup"
+import Login from "../modals/login"
+import ForgotPassword from "../modals/forgotpassword"
+import { RecoilRoot, useRecoilValue, useSetRecoilState } from 'recoil'
+import { modalState } from "../atoms/atomSignLogPass"
+
 
 // border-solid border-white border-2 
 
-function test() {
-    console.log("test")
-}
+// function openModal(e: any) {
+//     console.log(e)
+// }
 
 export default function Navbar() {
 
-    const [isSignup, setSignup] = useState(false)
+    // const [isSignup, setSignup] = useState(false)
+    const modal = useRecoilValue(modalState)
+    const setModalIsOpen = useSetRecoilState(modalState)
+
+    const openModal = () => {
+        setModalIsOpen(prev => ({ ...prev, isOpen: true }))
+    }
 
     return <>
         <div id="topbar" className="flex justify-between ">
@@ -21,11 +32,10 @@ export default function Navbar() {
                 <Image src='/logo.png' width={300} height={300} alt=''></Image>
             </Link>
             <div className="flex items-center">
-                {/* <Link href="/modals"> */}
-                <button onClick={test}
+                <button onClick={openModal}
                     className="bg-brand-orange px-3 py-1 mr-10 rounded-lg text-white border-4 border-transparent hover:bg-white hover:text-black hover:border-4 hover:border-solid hover:border-brand-orange ease-linear duration-100">Sign up</button>
-                {/* </Link> */}
             </div>
+
         </div>
 
     </>

@@ -8,8 +8,8 @@ export default function Modals() {
     return <>
         {/* <Signup /> */}
 
-        {/* <Login /> */}
+        <Login />
 
-        <ForgotPassword />
+        {/* <ForgotPassword /> */}
     </>
 }
