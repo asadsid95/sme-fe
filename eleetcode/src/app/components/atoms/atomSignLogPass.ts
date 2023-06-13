@@ -9,7 +9,7 @@ type atomModal = {
 
 const initialState: atomModal = {
     isOpen: false,
-    window: 'signup'
+    window: 'login'
 }
 
 export const modalState = atom({

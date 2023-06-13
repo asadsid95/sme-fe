@@ -1,10 +1,19 @@
 'use client'
 
 import { useState } from "react"
+import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { modalState } from "../atoms/atomSignLogPass"
 
 export default function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    const setModalType = useSetRecoilState(modalState)
+
+
+    const handleClick = (type: string) => {
+        setModalType((prev: any) => ({ ...prev, window: type }))
+    }
 
     const submitLogin = ((e) => {
         console.log(e)
@@ -32,10 +41,10 @@ export default function Login() {
                     {/* </div> */}
                     {/* <div> */}
                     <div className="text-xs">
-                        <p>Don&apos;t have an account?{''}<a href="#" className="font-bold">Register</a></p>
+                        <p>Don&apos;t have an account?{''}<a href="#" className="font-bold" onClick={() => handleClick('signup')}>Register</a></p>
                     </div>
                     <div className="text-xs">
-                        <p>Forgot you password?{''}<a href="#" className="font-bold">Recover quick</a></p>
+                        <p>Forgot you password?{''}<a href="#" className="font-bold" onClick={() => handleClick('forgotPassword')}>Recover quick</a></p>
                     </div>
 
                     <button className="bg-gray-200 rounded-md border-solid border-gray-400 border-2" type="submit">
