@@ -1,8 +1,6 @@
 'use client'
-import { initializeApp } from "firebase-admin/app"
-import { useState } from "react"
 
-const app = initializeApp();
+import { useState } from "react"
 
 
 function submitFirebase(e) {
