@@ -7,14 +7,13 @@ import Signup from "./components/modals/signup";
 import Login from "./components/modals/login";
 import ForgotPassword from "./components/modals/forgotpassword";
 import { modalState } from "./components/atoms/atomSignLogPass";
-import { RecoilRoot, useRecoilValue } from 'recoil'
+import { useRecoilValue } from 'recoil'
 
 export default function Home() {
 
     const modal = useRecoilValue(modalState)
 
     return (<>
-        {/* <RecoilRoot> */}
         <head>
             <title>Eleetcode</title>
         </head>
@@ -29,7 +28,6 @@ export default function Home() {
 
             </div>
         </body >
-        {/* </RecoilRoot> */}
     </>
     )
 } 

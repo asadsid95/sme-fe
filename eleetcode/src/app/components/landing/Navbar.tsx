@@ -3,23 +3,15 @@
 import React, { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import Signup from "../modals/signup"
-import Login from "../modals/login"
-import ForgotPassword from "../modals/forgotpassword"
-import { RecoilRoot, useRecoilValue, useSetRecoilState } from 'recoil'
+import { useSetRecoilState } from 'recoil'
 import { modalState } from "../atoms/atomSignLogPass"
 
 
 // border-solid border-white border-2 
 
-// function openModal(e: any) {
-//     console.log(e)
-// }
-
 export default function Navbar() {
 
-    // const [isSignup, setSignup] = useState(false)
-    const modal = useRecoilValue(modalState)
+    // const modal = useRecoilValue(modalState)
     const setModalIsOpen = useSetRecoilState(modalState)
 
     const openModal = () => {
