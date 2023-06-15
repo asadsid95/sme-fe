@@ -23,7 +23,7 @@ export default function Login() {
 
     return <>
 
-        <div id="login" className="z-10 w-full h-screen flex items-center justify-center absolute top-0 left-0 bg-black bg-opacity-25" onClick={closeModal}>
+        <div id="login" className="z-10 w-full h-screen flex items-center justify-center absolute top-0 left-0 bg-black bg-opacity-25" >
             <div className="w-1/5 h-2/5  bg-gradient-to-b from-dark-yellow to-gray-600 rounded-lg  ">
                 <form className="flex flex-col h-full justify-between p-5 content-center" onSubmit={submitLogin}>
                     <div className="flex items-center justify-end">

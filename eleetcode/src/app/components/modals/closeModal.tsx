@@ -16,23 +16,21 @@ function useCloseModal() {
     const setModalState = useSetRecoilState(modalState)
 
     const modalClose = () => {
-        setModalState((prev) => ({ ...prev, isOpen: false, window: 'login' }))
+        setModalState((prev) => ({ ...prev, isOpen: false, window: 'signup' }))
     }
 
     useEffect(() => {
 
         const escHandle = (e) => {
             if (e.key === "Escape")
-                console.log('hello')
-            modalClose()
+                modalClose()
         }
-
 
         window.addEventListener('keydown', escHandle)
 
         return (() => window.removeEventListener('keydown', escHandle))
 
-    })
+    }, [])
 
     // Calling this to allow clicking on 'X' closes modal, however useEffect is to used to close modal via 'Esc' press 
     return modalClose
