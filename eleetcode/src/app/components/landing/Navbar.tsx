@@ -19,7 +19,7 @@ export default function Navbar() {
     }
 
     return <>
-        <div id="topbar" className="flex justify-between ">
+        <div className="flex justify-between ">
             <Link href="/problems" >
                 <Image src='/logo.png' width={300} height={300} alt=''></Image>
             </Link>

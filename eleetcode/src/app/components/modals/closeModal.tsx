@@ -16,14 +16,15 @@ function useCloseModal() {
     const setModalState = useSetRecoilState(modalState)
 
     const modalClose = () => {
-        setModalState((prev) => ({ ...prev, isOpen: false, window: 'signup' }))
+        setModalState((prev) => ({ ...prev, isOpen: false, window: 'login' }))
     }
 
     useEffect(() => {
 
         const escHandle = (e) => {
             if (e.key === "Escape")
-                modalClose()
+                console.log('hello')
+            modalClose()
         }
 
 

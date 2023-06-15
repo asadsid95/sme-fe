@@ -24,7 +24,8 @@ export default function Home() {
 
                 <Image alt='' width={600} height={600} src='/hero.png' className="justify-center mx-auto my-40"></Image>
 
-                {modal.window === "signup" ? <Signup /> : modal.window === "login" ? <Login /> : <ForgotPassword />}
+                {modal.isOpen && <Signup />}
+                {/* {modal.window === "signup" ? <Signup /> : modal.window === "login" ? <Login /> : <ForgotPassword />} */}
 
             </div>
         </body >
