@@ -20,12 +20,12 @@ export default function Navbar() {
 
     return <>
         <div className="flex justify-between ">
-            <Link href="/problems" >
+            <Link href="/components/problems" >
                 <Image src='/logo.png' width={300} height={300} alt=''></Image>
             </Link>
-            <div className="flex items-center">
+            <div className="flex items-center ">
                 <button onClick={openModal}
-                    className="bg-brand-orange px-3 py-1 mr-10 rounded-lg text-white border-4 border-transparent hover:bg-white hover:text-black hover:border-4 hover:border-solid hover:border-brand-orange ease-linear duration-100">Sign up</button>
+                    className="bg-brand-orange px-3 py-1 mr-10 rounded-lg text-white border-4 border-transparent hover:bg-white hover:text-black hover:border-4 hover:border-solid hover:border-brand-orange ease-linear duration-100 shadow-md">Sign up</button>
             </div>
 
         </div>

@@ -24,11 +24,6 @@ export default function Home() {
 
                 <Image alt='' width={600} height={600} src='/hero.png' className="justify-center mx-auto my-40"></Image>
 
-                {/* {modal.isOpen && <Signup />} */}
-                {/* {modal.window === "signup" && modal.isOpen === true ?
-                    <Signup /> : modal.window === "login" && modal.isOpen === true
-                        ? <Login /> : <ForgotPassword />} */}
-
                 {modal.isOpen && (
                     <>
                         {modal.window === "signup" && <Signup />}

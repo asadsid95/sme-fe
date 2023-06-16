@@ -12,10 +12,6 @@ export default function ForgotPassword() {
     const [sendPasswordResetEmail, sending, error] = useSendPasswordResetEmail(auth)
     const router = useRouter()
 
-    // const actionCodeSettings = {
-    //     url: 'https://www.example.com/login',
-    // };
-
     const submitRecovery = async (e: any) => {
         e.preventDefault()
 
@@ -33,8 +29,6 @@ export default function ForgotPassword() {
 
         }
     }
-
-
 
     return <>
         <div id='forgotPassword' className="z-10 w-full h-screen flex items-center justify-center absolute top-0 left-0 bg-black bg-opacity-25" >
