@@ -65,16 +65,16 @@ export default function Signup() {
                     <div className="flex items-center justify-end">
                         <button type='button' onClick={closeModal} className="color-white">X</button>
                     </div>
-                    <h4>Sign up for Eleetcode account</h4>
+                    <h4 className="text-md font-semibold">Sign up for Eleetcode account</h4>
 
                     <label>Full Name</label>
-                    <input name='name' value={name} className="bg-slate-500" placeholder="Your name" onChange={e => { setName(e.target.value) }} />
+                    <input name='name' value={name} className="bg-slate-500 rounded-sm p-1" placeholder="Your name" onChange={e => { setName(e.target.value) }} />
 
                     <label>Email</label>
-                    <input name='email' value={email} className="bg-slate-500" type="email" placeholder="example@company.com" onChange={e => setEmail(e.target.value)} />
+                    <input name='email' value={email} className="bg-slate-500 rounded-sm p-1" type="email" placeholder="example@company.com" onChange={e => setEmail(e.target.value)} />
 
                     <label>Password</label>
-                    <input name="password" className="bg-slate-500" value={password} type='password' placeholder="*******" onChange={e => setPassword(e.target.value)} />
+                    <input name="password" className="bg-slate-500  rounded-sm p-1" value={password} type='password' placeholder="*******" onChange={e => setPassword(e.target.value)} />
 
                     <button className="bg-gray-800 rounded-md border-solid border-gray-800 border-2 text-white" type="submit" >Signup</button>
 

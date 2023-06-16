@@ -50,13 +50,13 @@ export default function Login() {
                     <div className="flex items-center justify-end">
                         <button type='button' onClick={closeModal}>X</button>
                     </div>
-                    <h4>Log in to your Eleetcode account</h4>
+                    <h4 className="text-md font-semibold">Log in to your Eleetcode account</h4>
 
                     <label>Email</label>
-                    <input name='email' value={email} type='email' placeholder="example@company.com" className="bg-slate-500" onChange={e => setEmail(e.target.value)} />
+                    <input name='email' value={email} type='email' placeholder="example@company.com" className="bg-slate-500 rounded-sm p-1" onChange={e => setEmail(e.target.value)} />
 
                     <label>Password</label>
-                    <input name="password" value={password} type='password' placeholder="*******" className="bg-slate-500" onChange={e => setPassword(e.target.value)} />
+                    <input name="password" value={password} type='password' placeholder="*******" className="bg-slate-500 rounded-sm p-1" onChange={e => setPassword(e.target.value)} />
 
                     <button className="bg-gray-800 rounded-md border-solid border-gray-800 border-2 text-white" type="submit">
                         Log in

@@ -12,15 +12,15 @@ export default function ForgotPassword() {
     const [sendPasswordResetEmail, sending, error] = useSendPasswordResetEmail(auth)
     const router = useRouter()
 
-    const actionCodeSettings = {
-        url: 'https://www.example.com/login',
-    };
+    // const actionCodeSettings = {
+    //     url: 'https://www.example.com/login',
+    // };
 
     const submitRecovery = async (e: any) => {
         e.preventDefault()
 
         try {
-            const recoveredUser = await sendPasswordResetEmail(recoveryEmail, actionCodeSettings)
+            const recoveredUser = await sendPasswordResetEmail(recoveryEmail)
             if (recoveredUser != true) {
                 console.log('incorrect')
             }
@@ -43,10 +43,10 @@ export default function ForgotPassword() {
                     <div className="flex items-center justify-end">
                         <button type='button' onClick={closeModal}>X</button>
                     </div>
-                    <p>
+                    <p className="text-md font-semibold">
                         To recover, provide email that is part of the account:
                     </p>
-                    <input value={recoveryEmail} onChange={(e) => { setRecoveryEmail(e.target.value) }}></input>
+                    <input value={recoveryEmail} className="bg-slate-500 rounded-sm p-1" placeholder="example@company.com" onChange={(e) => { setRecoveryEmail(e.target.value) }}></input>
 
                     <button className="bg-gray-200 rounded-md border-solid border-gray-400 border-2" type="submit">Submit</button>
                 </form>
