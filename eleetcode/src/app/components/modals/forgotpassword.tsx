@@ -17,11 +17,13 @@ export default function ForgotPassword() {
 
         try {
             const recoveredUser = await sendPasswordResetEmail(recoveryEmail)
+            // Unsuccessful recovery
             if (recoveredUser != true) {
-                console.log('incorrect')
+                alert('Incorrect email')
             }
-
-            router.push('/')
+            // Successfull recovery
+            alert('Password resetted')
+            closeModal()
         }
         catch
         {

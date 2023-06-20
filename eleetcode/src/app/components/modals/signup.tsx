@@ -48,8 +48,14 @@ export default function Signup() {
 
         try {
             const newUser = await createUserWithEmailAndPassword(email, password)
-            if (!newUser) return;
-            router.push('/problems');
+            // if registration fails; add notifications instead of alert
+            if (!newUser) {
+                console.log(error?.message)
+                return alert('Failed to register, try again');
+            }
+            // if registration succeeds, close modal
+            alert('login successful')
+            closeModal()
         }
         catch (error: any) {
             alert(error.message)

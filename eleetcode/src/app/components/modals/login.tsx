@@ -33,10 +33,19 @@ export default function Login() {
 
         try {
             const loggedInUser = await signInWithEmailAndPassword(email, password)
-            if (!loggedInUser) return 0;
-            console.log(loggedInUser)
-            router.push('/');
+            // Unsuccessful login
+            if (!loggedInUser) {
+                alert('Unsuccessful login')
+                return;
+
+            }
+
+            // Successful login
+            console.log((user))
+            alert('Login successful!')
+            closeModal()
         }
+
         catch { (error: any) => alert(error.message) }
 
 
