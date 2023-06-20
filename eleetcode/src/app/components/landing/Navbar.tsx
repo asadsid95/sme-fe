@@ -13,18 +13,25 @@ import { auth } from "@/app/firebase/firebase"
 
 export default function Navbar() {
 
-    const [user, loading, error] = useAuthState(auth)
-
     const setModalIsOpen = useSetRecoilState(modalState)
 
     const openModal = () => {
         setModalIsOpen(prev => ({ ...prev, isOpen: true }))
     }
 
-    // const [signOut, loading, error] = useSignOut(auth)
-    // const logout = async () => {
-    //     signOut
-    // }
+    const [user, loadingAuth, errorAuth] = useAuthState(auth)
+
+    const [signOut, loadingSignOut, errorSignOut] = useSignOut(auth)
+    const logout = async () => {
+        // log out user
+        const success: any = await signOut()
+
+        // loading state during signing out
+        { !loadingSignOut && alert('Signing out...') }
+
+    }
+
+    // alert(user?.displayName)
 
     return <>
         <div className="flex justify-between ">
@@ -32,12 +39,19 @@ export default function Navbar() {
                 <Image src='/logo.png' width={300} height={300} alt=''></Image>
             </Link>
             <div className="flex items-center ">
-                <button onClick={openModal}
-                    className="bg-brand-orange px-3 py-1 mr-10 rounded-lg text-white border-4 border-transparent hover:bg-white hover:text-black hover:border-4 hover:border-solid hover:border-brand-orange ease-linear duration-100 shadow-md">Sign up</button>
+
+                {!user && <button onClick={openModal}
+                    className="bg-brand-orange px-3 py-1 mr-10 rounded-lg text-white border-4 border-transparent hover:bg-white hover:text-black hover:border-4 hover:border-solid hover:border-brand-orange ease-linear duration-100 shadow-md">Sign up</button>}
 
 
-                <button
-                    className="bg-brand-orange px-3 py-1 mr-10 rounded-lg text-white border-4 border-transparent hover:bg-white hover:text-black hover:border-4 hover:border-solid hover:border-brand-orange ease-linear duration-100 shadow-md">LOG OUT</button>
+                {user &&
+                    <>
+                        <button onClick={logout}
+                            className="bg-brand-orange px-3 py-1 mr-10 rounded-lg text-white border-4 border-transparent hover:bg-white hover:text-black hover:border-4 hover:border-solid hover:border-brand-orange ease-linear duration-100 shadow-md">Logout</button>
+
+                        <p className="font-semibold mr-10">User: {user.email}</p>
+                    </>
+                }
             </div>
 
         </div>

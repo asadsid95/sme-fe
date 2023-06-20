@@ -37,7 +37,6 @@ export default function Login() {
             if (!loggedInUser) {
                 alert('Unsuccessful login')
                 return;
-
             }
 
             // Successful login
