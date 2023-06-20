@@ -6,16 +6,9 @@ import { modalState } from "../atoms/atomSignLogPass"
 import useCloseModal from "./closeModal"
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { app, auth, firestore } from "@/app/firebase/firebase"
-import { useRouter } from "next/navigation"
 
-
-function submitFirebase(e) {
-    e.preventDefault()
-
-    const readData = new FormData(e.target)
-    console.log(Object.fromEntries(readData.entries()))
-
-}
+import { toast } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Signup() {
 
@@ -26,8 +19,6 @@ export default function Signup() {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-
-    const router = useRouter()
 
     const setModalType = useSetRecoilState(modalState)
     const closeModal = useCloseModal()
@@ -50,15 +41,14 @@ export default function Signup() {
             const newUser = await createUserWithEmailAndPassword(email, password)
             // if registration fails; add notifications instead of alert
             if (!newUser) {
-                console.log(error?.message)
-                return alert('Failed to register, try again');
+                return toast('Failed to register, try again', { position: "bottom-center", theme: 'dark', autoClose: 2000, pauseOnHover: false });
             }
             // if registration succeeds, close modal
-            alert('login successful')
+            toast('Registeration successful', { position: "bottom-center", theme: 'dark', autoClose: 1000, pauseOnHover: false })
             closeModal()
         }
         catch (error: any) {
-            alert(error.message)
+            toast(error.message)
         }
     }
 
@@ -94,39 +84,3 @@ export default function Signup() {
     </>
 
 }
-
-// function useCloseModal() {
-//     // const mainDiv = document.getElementById('signup')
-//     // mainDiv.style.display = 'None'
-
-//     // -------------
-
-//     // Must close on click of 'X' or Esc key
-//     // get atom state to set isOpen 'false' and window to reset to sign-up modal. This is a function with no arg.
-
-//     // use of useEffect to call the function when esc is pressed
-
-//     const setModalState = useSetRecoilState(modalState)
-
-//     const modalClose = () => {
-//         setModalState((prev) => ({ ...prev, isOpen: false, window: 'login' }))
-//     }
-
-//     useEffect(() => {
-
-//         const hello = (e) => {
-//             if (e.key === "Escape")
-//                 modalClose()
-//         }
-
-
-//         window.addEventListener('keydown', hello)
-
-//         return (() => window.removeEventListener('keydown', hello))
-
-//     })
-
-//     // Calling this to allow clicking on 'X' closes modal, however useEffect is to used to close modal via 'Esc' press
-//     return modalClose
-
-// }

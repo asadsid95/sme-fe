@@ -5,6 +5,7 @@ import useCloseModal from "./closeModal"
 import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
 import { auth } from "@/app/firebase/firebase";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify"
 
 export default function ForgotPassword() {
     const [recoveryEmail, setRecoveryEmail] = useState('')
@@ -19,10 +20,11 @@ export default function ForgotPassword() {
             const recoveredUser = await sendPasswordResetEmail(recoveryEmail)
             // Unsuccessful recovery
             if (recoveredUser != true) {
-                alert('Incorrect email')
+                toast('Incorrect email', { position: "bottom-center", theme: 'dark', autoClose: 2000, pauseOnHover: false })
+                return
             }
             // Successfull recovery
-            alert('Password resetted')
+            toast('Password reset email sent', { position: "bottom-center", theme: 'dark', autoClose: 1000, pauseOnHover: false })
             closeModal()
         }
         catch

@@ -6,7 +6,9 @@ import { modalState } from "../atoms/atomSignLogPass"
 import useCloseModal from "./closeModal"
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { auth } from "@/app/firebase/firebase"
-import { useRouter } from "next/navigation"
+// import { useRouter } from "next/navigation"
+
+import { toast } from "react-toastify"
 
 export default function Login() {
     const [email, setEmail] = useState('')
@@ -19,7 +21,7 @@ export default function Login() {
         setModalType((prev: any) => ({ ...prev, window: type }))
     }
 
-    const router = useRouter()
+    // const router = useRouter()
 
     const [
         signInWithEmailAndPassword,
@@ -35,13 +37,14 @@ export default function Login() {
             const loggedInUser = await signInWithEmailAndPassword(email, password)
             // Unsuccessful login
             if (!loggedInUser) {
-                alert('Unsuccessful login')
+
+                toast('Unsuccessful login, try again', { position: "bottom-center", theme: 'dark', autoClose: 2000, pauseOnHover: false })
                 return;
             }
 
             // Successful login
             console.log((user))
-            alert('Login successful!')
+            toast('Login successful!', { position: "bottom-center", theme: 'colored', closeOnClick: true, autoClose: 1000, pauseOnHover: false })
             closeModal()
         }
 
