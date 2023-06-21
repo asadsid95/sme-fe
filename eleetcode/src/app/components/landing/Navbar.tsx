@@ -31,7 +31,7 @@ export default function Navbar() {
         const success: any = await signOut()
 
         // loading state during signing out
-        { !loadingSignOut && toast('Signing out...', { position: "bottom-center", theme: 'dark', autoClose: 1000, pauseOnHover: false }) }
+        { !loadingSignOut && toast('Signed out!', { position: "bottom-center", theme: 'dark', autoClose: 1000, pauseOnHover: false }) }
 
     }
 

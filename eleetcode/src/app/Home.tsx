@@ -7,13 +7,18 @@ import Login from "./components/modals/login";
 import ForgotPassword from "./components/modals/forgotpassword";
 import { modalState } from "./components/atoms/atomSignLogPass";
 import { useRecoilValue } from 'recoil'
+import { useAuthState } from "react-firebase-hooks/auth";
 
-import { toast, ToastContainer } from "react-toastify"
+import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
+import { auth } from "./firebase/firebase";
 
 export default function Home() {
 
     const modal = useRecoilValue(modalState)
+
+    // Might be needed to 
+    const [user, loadingAuth, errorAuth] = useAuthState(auth)
 
     return (<>
         <head>
