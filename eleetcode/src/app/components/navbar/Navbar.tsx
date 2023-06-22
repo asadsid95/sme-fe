@@ -37,7 +37,7 @@ export default function Navbar() {
 
     return <>
         <div className="flex justify-between ">
-            <Link href="/components/problems" >
+            <Link href="/components/problemsList" >
                 <Image src='/logo.png' width={300} height={300} alt=''></Image>
             </Link>
 

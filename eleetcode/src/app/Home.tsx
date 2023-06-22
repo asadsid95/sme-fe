@@ -1,7 +1,7 @@
 'use client'
 
 import Image from "next/image";
-import Navbar from "./components/landing/Navbar";
+import Navbar from "./components/navbar/Navbar";
 import Signup from "./components/modals/signup";
 import Login from "./components/modals/login";
 import ForgotPassword from "./components/modals/forgotpassword";
