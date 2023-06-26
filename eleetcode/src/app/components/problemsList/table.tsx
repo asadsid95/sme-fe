@@ -1,10 +1,11 @@
-import { problems } from "@/app/utils/problems"
+'use client'
+
 import Problems from "./listProblems"
+import { RecoilRoot } from "recoil"
 
 function ProblemTable() {
 
-    return <>
-
+    return <RecoilRoot>
         <div className='relative overflow-x-auto mx-auto px-6 pb-10'>
             <table className='text-sm text-left text-gray-800 dark:text-gray-400 sm:w-7/12 w-full max-w-[1200px] mx-auto'>
                 <thead className='text-xs text-black uppercase dark:text-gray-400 border-b '>
@@ -30,8 +31,8 @@ function ProblemTable() {
                 <Problems />
             </table>
         </div>
-
-    </>
+    </RecoilRoot>
+    // </>
 
 }
 
