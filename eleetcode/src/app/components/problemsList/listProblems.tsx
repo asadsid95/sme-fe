@@ -38,7 +38,12 @@ const Problems = () => {
                                 <BsCheckCircle fontSize={'20'} className="text-green-700" />
                             </td>
                             <td className="px-4 py-3">
-                                <Link href="/" className="hover:text-blue-500 hover:font-semibold">{problem.title}</Link>
+                                {/* {problem.title ? */}
+                                <Link href={`/problem/${problem.id}`} className="hover:text-blue-500 hover:font-semibold">{problem.title}</Link>
+                                {/* :
+                                    <Link href={`/problem/${problem.id}`} className="hover:text-blue-500 hover:font-semibold">{problem.title}</Link>} */}
+
+                                {/* <Link href="/" className="hover:text-blue-500 hover:font-semibold">{problem.title}</Link> */}
                             </td>
                             <td className={`px-4 py-3 ${difficultyColour}`}>
                                 {problem.difficulty}
