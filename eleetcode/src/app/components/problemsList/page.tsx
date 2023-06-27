@@ -1,9 +1,12 @@
+'use client'
+
+import { RecoilRoot } from "recoil"
 import ProblemTable from "./table"
 import Topbar from "./topbar"
 
-export default function Problems() {
-    return <>
 
+export default function Problems() {
+    return <RecoilRoot>
         <head>
             <title>Eleetcode</title>
         </head>
@@ -20,5 +23,5 @@ export default function Problems() {
             </div>
 
         </body>
-    </>
+    </RecoilRoot>
 }

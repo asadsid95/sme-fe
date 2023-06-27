@@ -43,7 +43,6 @@ export default function Login() {
             }
 
             // Successful login
-            console.log((user))
             toast('Login successful!', { position: "bottom-center", theme: 'colored', closeOnClick: true, autoClose: 1000, pauseOnHover: false })
             closeModal()
         }

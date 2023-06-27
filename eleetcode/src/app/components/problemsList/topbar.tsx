@@ -1,8 +1,18 @@
+'use client'
+
 import Image from "next/image";
 import Link from "next/link";
+import { modalState } from "../atoms/atomSignLogPass";
+import { useSetRecoilState } from "recoil";
+
 
 export default function Topbar() {
 
+    const setModalType = useSetRecoilState(modalState)
+
+    // const handleClick = () => {
+    //     setModalType((prev) => ({ ...prev, isOpen: true, window: 'login' }))
+    // }
 
     return <>
         <div className="flex justify-between align-middle bg-gradient-to-b from-gray-700 to-gray-600 shadow-md ">
@@ -20,7 +30,7 @@ export default function Topbar() {
                 </div>
 
                 <div>
-                    <Link href='/'>
+                    <Link href='' onClick={() => { setModalType((prev) => ({ ...prev, isOpen: true, window: "login" })) }}>
                         <button className="bg-white px-3 py-1 mr-10 rounded-lg text-brand-orange border-4 border-transparent hover:bg-brand-orange hover:text-black hover:border-4 hover:border-solid hover:border-brand-orange ease-linear duration-100 shadow-md">
                             Sign In
                         </button>
