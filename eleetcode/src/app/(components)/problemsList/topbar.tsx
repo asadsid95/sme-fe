@@ -3,12 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { modalState } from "../atoms/atomSignLogPass";
-import { useSetRecoilState } from "recoil";
+import { useSetRecoilState, useRecoilValue } from "recoil";
 import React from "react";
 
-type TopbarProps = {
-    problemPage?: boolean
-}
+// type TopbarProps = {
+//     problemPage?: boolean
+// }
 
 export default function Topbar({ problemPage }) {
 
@@ -26,12 +26,12 @@ export default function Topbar({ problemPage }) {
                 </Link>
             </div>
 
-            {problemPage &&
+            {/* {problemPage &&
                 <div className="flex items-center justify-center ">
                     <h1> HELLO </h1>
 
                 </div>
-            }
+            } */}
 
             <div className="flex justify-evenly items-center align-bottom w-64 ">
                 <div>
@@ -40,9 +40,9 @@ export default function Topbar({ problemPage }) {
                     </button>
                 </div>
 
-                <div onClick={() => { alert('pressed'); setModalType((prev) => ({ ...prev, isOpen: true, window: "login" })) }}>
+                <div >
                     <Link href='/' >
-                        <button className="bg-white px-3 py-1 mr-10 rounded-lg text-brand-orange border-4 border-transparent hover:bg-brand-orange hover:text-black hover:border-4 hover:border-solid hover:border-brand-orange ease-linear duration-100 shadow-md">
+                        <button className="bg-white px-3 py-1 mr-10 rounded-lg text-brand-orange border-4 border-transparent hover:bg-brand-orange hover:text-black hover:border-4 hover:border-solid hover:border-brand-orange ease-linear duration-100 shadow-md" onClick={() => { ; setModalType((prev) => ({ ...prev, isOpen: true, window: "login" })) }}>
                             Sign In
                         </button>
                     </Link>

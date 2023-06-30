@@ -1,11 +1,11 @@
 'use client'
 
 import Image from "next/image";
-import Navbar from "./components/navbar/Navbar";
-import Signup from "./components/modals/signup";
-import Login from "./components/modals/login";
-import ForgotPassword from "./components/modals/forgotpassword";
-import { modalState } from "./components/atoms/atomSignLogPass";
+import Navbar from "./(components)/navbar/Navbar";
+import Signup from "./(components)/modals/signup";
+import Login from "./(components)/modals/login";
+import ForgotPassword from "./(components)/modals/forgotpassword";
+import { modalState } from "./(components)/atoms/atomSignLogPass";
 import { useRecoilValue } from 'recoil'
 import { useAuthState } from "react-firebase-hooks/auth";
 
