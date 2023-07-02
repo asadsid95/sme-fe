@@ -4,6 +4,8 @@ import { RecoilRoot } from "recoil"
 import ProblemTable from "./table"
 import Topbar from "./topbar"
 
+import { ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Problems() {
     return <RecoilRoot>
@@ -20,6 +22,8 @@ export default function Problems() {
                 </div>
 
                 <ProblemTable />
+                <ToastContainer />
+
             </div>
 
         </body>
