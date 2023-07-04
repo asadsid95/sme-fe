@@ -38,12 +38,14 @@ export default function Topbar({ problemPage }) {
                 </Link>
             </div>
 
-            {/* {problemPage &&
+            {problemPage &&
                 <div className="flex items-center justify-center ">
-                    <h1> HELLO </h1>
-
+                    <button type="button">&</button>
+                    <p>=</p>
+                    <Link href="/problemsList"><h1>problems </h1></Link>
+                    <button type="button">$</button>
                 </div>
-            } */}
+            }
 
             <div className="flex justify-evenly items-center align-bottom w-64 ">
                 <div>
