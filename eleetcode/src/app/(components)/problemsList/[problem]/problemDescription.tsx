@@ -67,8 +67,7 @@ export default function ProblemDescription({ prob }) {
                         {/* Problem Statement(paragraphs) */}
                         <div className='text-white text-sm'>
                             <p className='mt-3'>
-                                Given an array of integers <code>nums</code> and an integer <code>target</code>, return
-                                <em>indices of the two numbers such that they add up to</em> <code>target</code>.
+                                Given an array of integers <code>nums</code> and an integer <code>target</code>, return <em>indices of the two numbers such that they add up to</em> <code>target</code>.
                             </p>
                             <p className='mt-3'>
                                 You may assume that each input would have <strong>exactly one solution</strong>, and you

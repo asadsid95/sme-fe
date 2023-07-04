@@ -14,7 +14,7 @@ export default function Problems() {
         </head>
 
         <body>
-            <div className="bg-gradient-to-b from-gray-600 to-gray-800 h-screen">
+            <div className="bg-gradient-to-b overflow-x-hidden from-gray-600 to-gray-800 h-screen">
                 <Topbar />
 
                 <div>

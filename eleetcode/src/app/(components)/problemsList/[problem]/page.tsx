@@ -15,7 +15,6 @@ export default function SomeProblem({ params }: { params: { problem: String } })
 
             {/* split */}
             <Split className="split"
-                direction='horizontal'
                 gutterSize={10}
                 minSize={0}
             >

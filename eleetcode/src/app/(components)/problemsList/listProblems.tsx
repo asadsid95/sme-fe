@@ -23,7 +23,7 @@ const Problems = () => {
 
     return (
         <>
-            <tbody className="text-white text-sm">
+            <tbody className="text-white ">
                 {problems.map((problem, index) => {
 
                     const difficultyColour =
