@@ -39,9 +39,9 @@ export default function CodeEditor() {
 
             {/* Code editor */}
             <Split
-                className="h-[calc(100vh-90px)]"
+                className="h-[calc(100vh-99px)]"
                 direction='vertical'
-                sizes={[50, 50]} minSize={60}>
+                sizes={[60, 40]} minSize={60}>
 
                 <div className='w-full overflow-auto' >
                     <CodeMirror
@@ -62,7 +62,7 @@ export default function CodeEditor() {
                     </div>
 
 
-                    <div className='flex'>
+                    <div className='flex text-xs'>
                         <div className='mr-2 items-start mt-2 '>
                             <div className='flex flex-wrap items-center gap-y-4'>
                                 <div
@@ -93,22 +93,22 @@ export default function CodeEditor() {
                         </div>
                     </div>
 
-                    <div className='font-semibold my-4'>
-                        <p className='text-sm font-medium mt-4 text-white'>Input:</p>
+                    <div className='font-semibold my-1 text-xs'>
+                        <p className='text-xs font-medium mt-4 text-white'>Input:</p>
                         <div className='w-full cursor-text rounded-lg border px-3 py-[10px] bg-dark-fill-3 border-transparent text-white mt-2'>
                             input Text
                         </div>
-                        <p className='text-sm font-medium mt-4 text-white'>Output:</p>
+                        <p className='text-xs font-medium mt-4 text-white'>Output:</p>
                         <div className='w-full cursor-text rounded-lg border px-3 py-[10px] bg-dark-fill-3 border-transparent text-white mt-2'>
                             Output text
                         </div>
                     </div>
                 </div>
 
-                <div className='flex bg-dark-layer-1 absolute bottom-0 z-10 w-full'>
+                <div className='flex bg-dark-layer-1 absolute bottom-0 z-10 w-full border-2 '>
                     <div className='mx-5 my-[10px] flex justify-between w-full'>
                         <div className='mr-2 flex flex-1 flex-nowrap items-center space-x-4'>
-                            <button className='px-3 py-1.5 font-medium items-center transition-all inline-flex bg-dark-fill-3 text-sm hover:bg-dark-fill-2 text-dark-label-2 rounded-lg pl-3 pr-2'>
+                            <button className='px-3 py-1.5 font-medium items-center transition-all inline-flex bg-dark-fill-3 text-sm hover:bg-dark-fill-2 text-dark-label-2 rounded-lg pl-3 pr-2 '>
                                 Console
                                 <div className='ml-1 transform transition flex items-center'>
                                     <BsChevronUp className='fill-gray-6 mx-1 fill-dark-gray-6' />

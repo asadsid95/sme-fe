@@ -8,9 +8,9 @@ type ProblemDescription = {
     props?: string
 }
 
-export default function ProblemDescription({ prob }) {
+export default function ProblemDescription({ prop }) {
 
-    // const problem = prob
+    // const problem = prop
 
     return <>
         <div className='bg-dark-layer-1'>
@@ -27,7 +27,7 @@ export default function ProblemDescription({ prob }) {
                     <div className='w-full'>
                         <div className='flex flex-col space-x-4'>
                             <div className='flex-1 mr-2 text-lg text-white font-medium'>
-                                1. {prob.problem}
+                                1. {prop.problem}
                             </div>
                         </div>
 
@@ -65,7 +65,7 @@ export default function ProblemDescription({ prob }) {
                         </div>
 
                         {/* Problem Statement(paragraphs) */}
-                        <div className='text-white text-sm'>
+                        <div className='text-white text-xs'>
                             <p className='mt-3'>
                                 Given an array of integers <code>nums</code> and an integer <code>target</code>, return <em>indices of the two numbers such that they add up to</em> <code>target</code>.
                             </p>
@@ -77,7 +77,7 @@ export default function ProblemDescription({ prob }) {
                         </div>
 
                         {/* Examples */}
-                        <div className='mt-4'>
+                        <div className='mt-4 text-xs'>
                             {/* Example 1 */}
                             <div>
                                 <p className='font-medium text-white '>Example 1: </p>
@@ -116,7 +116,7 @@ export default function ProblemDescription({ prob }) {
                             </div>
                         </div>
 
-                        <div className='my-5'>
+                        <div className='my-5 text-xs'>
                             <div className='text-white text-sm font-medium'>Constraints:</div>
                             <ul className='text-white ml-5 list-disc'>
                                 <li className='mt-2'>
@@ -129,7 +129,7 @@ export default function ProblemDescription({ prob }) {
                                 <li className='mt-2'>
                                     <code>-10 ≤ target ≤ 10</code>
                                 </li>
-                                <li className='mt-2 text-sm'>
+                                <li className='mt-2 text-xs'>
                                     <strong>Only one valid answer exists.</strong>
                                 </li>
                             </ul>

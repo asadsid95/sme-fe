@@ -100,7 +100,7 @@ export default function Topbar({ problemPage }) {
                 {problemPage &&
                     <div>
                         {showTimer ? (
-                            <div className='flex items-center space-x-2 bg-dark-fill-3 p-1.5 cursor-pointer rounded hover:bg-dark-fill-2'>
+                            <div className='flex items-center space-x-2 bg-dark-fill-3 p-1.5 cursor-pointer rounded hover:bg-dark-fill-2 mr-5'>
                                 <div>{formatTime(time)}</div>
                                 <FiRefreshCcw
                                     onClick={() => {
@@ -111,7 +111,7 @@ export default function Topbar({ problemPage }) {
                             </div>
                         ) : (
                             <div
-                                className='flex items-center p-1 h-8 hover:bg-dark-fill-3 rounded cursor-pointer'
+                                className='flex items-center p-1 h-8 hover:bg-dark-fill-3 rounded cursor-pointer mr-5'
                                 onClick={() => setShowTimer(true)}
                             >
                                 <svg

@@ -18,7 +18,7 @@ export default function SomeProblem({ params }: { params: { problem: String } })
                 gutterSize={10}
                 minSize={0}
             >
-                <ProblemDescription prob={params} />
+                <ProblemDescription prop={params} />
                 <CodeEditor />
             </Split>
 
