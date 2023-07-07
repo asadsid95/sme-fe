@@ -1,5 +1,19 @@
 import { Problem } from "../types/problem";
 import assert from "assert";
+import example from "./images/reverseLL.jpg"
+
+const starterCodeReverseLinkedListJS = `
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+// Do not edit function name
+function reverseLinkedList(head) {
+  // Write your code here
+};`;
 
 class LinkedList {
     value: number;
@@ -23,19 +37,6 @@ class LinkedList {
     }
 }
 
-const starterCodeReverseLinkedListJS = `
-/**
- * Definition for singly-linked list.
- * function ListNode(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
- * }
- */
-// Do not edit function name
-function reverseLinkedList(head) {
-  // Write your code here
-};`;
-
 
 export const reverseLinkedListHandler = (fn: any) => {
     try {
@@ -54,12 +55,29 @@ export const reverseLinkedListHandler = (fn: any) => {
     }
 }
 
-function createLinkedList(values: number[]) = {
+// LL is created from a numbers array
+function createLinkedList(values: number[]): LinkedList {
 
-    return ()
+    const head = new LinkedList(values[0]);
+    let current = head;
+    for (let i = 1; i < values.length; i++) {
+        const node = new LinkedList(values[i]);
+        current.next = node;
+        current = node;
+    }
+    return head;
 }
 
-function getListValues(head: LinkedList)
+// array is created from LL
+function getListValues(head: LinkedList): number[] {
+    const values = [];
+    let current: LinkedList | null = head;
+    while (current !== null) {
+        values.push(current.value);
+        current = current.next;
+    }
+    return values;
+}
 
 export const reverseLinkedList: Problem = {
     id: "reverse-linked-list",
