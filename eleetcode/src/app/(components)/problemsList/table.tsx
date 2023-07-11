@@ -1,5 +1,6 @@
 'use client'
 
+import FormAddProblems from "./formAddProblems"
 import Problems from "./listProblems"
 import { RecoilRoot } from "recoil"
 
@@ -30,6 +31,7 @@ function ProblemTable() {
                 </thead>
                 <Problems />
             </table>
+            <FormAddProblems />
         </div>
     </RecoilRoot>
     // </>
