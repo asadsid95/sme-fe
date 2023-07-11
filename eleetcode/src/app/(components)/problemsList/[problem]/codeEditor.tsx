@@ -4,8 +4,11 @@ import Split from 'react-split';
 import { vscodeDark } from "@uiw/codemirror-theme-vscode";
 import { javascript } from "@codemirror/lang-javascript";
 import { BsChevronUp } from 'react-icons/bs';
+import { useState } from 'react';
 
-export default function CodeEditor() {
+export default function CodeEditor(prop) {
+
+    const [starterCode, setStarterCode] = useState(prop.starterCode)
 
     return <>
         <div className='flex flex-col bg-dark-layer-1 relative overflow-x-hidden'>
@@ -47,7 +50,7 @@ export default function CodeEditor() {
                     <CodeMirror
                         theme={vscodeDark}
                         extensions={[javascript()]}
-                        value="console.log('hello world!');"
+                        value={starterCode}
                         style={{ fontSize: 16 }} />
 
                 </div>

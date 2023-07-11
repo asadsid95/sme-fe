@@ -10,8 +10,6 @@ type ProblemDescription = {
 
 export default function ProblemDescription({ prop }) {
 
-    // const problem = prop
-
     return <>
         <div className='bg-dark-layer-1'>
             {/* TAB */}
@@ -27,7 +25,7 @@ export default function ProblemDescription({ prop }) {
                     <div className='w-full'>
                         <div className='flex flex-col space-x-4'>
                             <div className='flex-1 mr-2 text-lg text-white font-medium'>
-                                1. {prop.problem}
+                                {prop.title}
                             </div>
                         </div>
 
@@ -66,78 +64,49 @@ export default function ProblemDescription({ prop }) {
 
                         {/* Problem Statement(paragraphs) */}
                         <div className='text-white text-xs'>
-                            <p className='mt-3'>
-                                Given an array of integers <code>nums</code> and an integer <code>target</code>, return <em>indices of the two numbers such that they add up to</em> <code>target</code>.
-                            </p>
-                            <p className='mt-3'>
-                                You may assume that each input would have <strong>exactly one solution</strong>, and you
-                                may not use thesame element twice.
-                            </p>
-                            <p className='mt-3'>You can return the answer in any order.</p>
+                            <div dangerouslySetInnerHTML={{ __html: prop.problemStatement }}></div>
                         </div>
 
                         {/* Examples */}
                         <div className='mt-4 text-xs'>
                             {/* Example 1 */}
-                            <div>
-                                <p className='font-medium text-white '>Example 1: </p>
-                                <div className='example-card'>
-                                    <pre>
-                                        <strong className='text-white'>Input: </strong> nums = [2,7,11,15], target = 9{" "}
-                                        <br />
-                                        <strong>Output:</strong> [0,1] <br />
-                                        <strong>Explanation:</strong>Because nums[0] + nums[1] == 9, we return [0, 1].
-                                    </pre>
-                                </div>
-                            </div>
+                            {prop.examples.map((example, index) => (
+                                <div key={example.index}>
+                                    <p className='font-medium text-white '>Example {index + 1}:</p>
+                                    <div className='example-card'>
+                                        <pre>
+                                            <strong className='text-white'>Input: </strong> {example.inputText}
+                                            <br />
+                                            <strong>Output:</strong> {example.outputText} <br />
+                                            {example.explanation &&
+                                                <>
+                                                    <strong>Explanation:</strong>
+                                                    {example.explanation}
+                                                </>
+                                            }
+                                        </pre>
 
-                            {/* Example 2 */}
-                            <div>
-                                <p className='font-medium text-white '>Example 2: </p>
-                                <div className='example-card'>
-                                    <pre>
-                                        <strong className='text-white'>Input: </strong> nums = [3,2,4], target = 6{" "}
-                                        <br />
-                                        <strong>Output:</strong> [1,2] <br />
-                                        <strong>Explanation:</strong>Because nums[1] + nums[2] == 6, we return [1, 2].
-                                    </pre>
+                                    </div>
                                 </div>
-                            </div>
-                            {/* Example 3 */}
+                            ))}
+
                             <div>
-                                <p className='font-medium text-white '>Example 3: </p>
-                                <div className='example-card'>
-                                    <pre>
-                                        <strong className='text-white'>Input: </strong> nums = [3,3], target = 6
-                                        <br />
-                                        <strong>Output:</strong> [0,1] <br />
-                                    </pre>
-                                </div>
                             </div>
                         </div>
-
-                        <div className='my-5 text-xs'>
-                            <div className='text-white text-sm font-medium'>Constraints:</div>
-                            <ul className='text-white ml-5 list-disc'>
-                                <li className='mt-2'>
-                                    <code>2 ≤ nums.length ≤ 10</code>
-                                </li>
-
-                                <li className='mt-2'>
-                                    <code>-10 ≤ nums[i] ≤ 10</code>
-                                </li>
-                                <li className='mt-2'>
-                                    <code>-10 ≤ target ≤ 10</code>
-                                </li>
-                                <li className='mt-2 text-xs'>
-                                    <strong>Only one valid answer exists.</strong>
-                                </li>
-                            </ul>
-                        </div>
-
-
 
                     </div>
+
+                    <div className='my-5 text-xs'>
+                        <div className='text-white text-sm font-medium'>Constraints:</div>
+                        <ul className='text-white ml-5 list-disc'>
+
+                            <div dangerouslySetInnerHTML={{ __html: prop.constraints }}></div>
+
+                        </ul>
+                    </div>
+
+
+
                 </div>
             </div>
         </div>

@@ -39,6 +39,7 @@ const Problems = () => {
                             </td>
                             <td className="px-4 py-3">
                                 <Link href={`/problemsList/${problem.id}`} className="hover:text-blue-500 hover:font-semibold">{problem.title}</Link>
+                                {/* is this a correct way to mention url segment in href, considering its for dynamic routes?*/}
 
                             </td>
                             <td className={`px-4 py-3 ${difficultyColour}`}>
