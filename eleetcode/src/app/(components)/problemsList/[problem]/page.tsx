@@ -10,9 +10,6 @@ export default function SomeProblem({ params }: { params: { problem: String } })
 
     if (Object.keys(problems).includes(params.problem)) {
 
-        // return <>
-        //     <h1>{problems[params.problem].title}</h1>
-        // </>
         return (
 
             < div className="h-screen bg-dark-gray-1" >

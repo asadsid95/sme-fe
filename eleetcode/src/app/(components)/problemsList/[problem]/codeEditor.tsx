@@ -6,9 +6,10 @@ import { javascript } from "@codemirror/lang-javascript";
 import { BsChevronUp } from 'react-icons/bs';
 import { useState } from 'react';
 
-export default function CodeEditor(prop) {
+export default function CodeEditor({ prop }) {
 
     const [starterCode, setStarterCode] = useState(prop.starterCode)
+    const [activeTestCaseId, setActiveTestCaseId] = useState(0)
 
     return <>
         <div className='flex flex-col bg-dark-layer-1 relative overflow-x-hidden'>
@@ -66,44 +67,33 @@ export default function CodeEditor(prop) {
 
 
                     <div className='flex text-xs'>
-                        <div className='mr-2 items-start mt-2 '>
-                            <div className='flex flex-wrap items-center gap-y-4'>
-                                <div
-                                    className={`font-medium items-center transition-all focus:outline-none inline-flex bg-dark-fill-3 hover:bg-dark-fill-2 relative rounded-lg px-4 py-1 cursor-pointer whitespace-nowrap
-                                    ${true ? "text-white" : "text-gray-500"}
-                                `}
-                                >
-                                    Case 1
-                                </div>
-
-                                <div
-                                    className={`mx-2 font-medium items-center transition-all focus:outline-none inline-flex bg-dark-fill-3 hover:bg-dark-fill-2 relative rounded-lg px-4 py-1 cursor-pointer whitespace-nowrap
-                                    ${true ? "text-white" : "text-gray-500"}
-                                `}
-                                >
-                                    Case 2
-                                </div>
-
-                                <div
-                                    className={`font-medium items-center transition-all focus:outline-none inline-flex bg-dark-fill-3 hover:bg-dark-fill-2 relative rounded-lg px-4 py-1 cursor-pointer whitespace-nowrap
-                                    ${true ? "text-white" : "text-gray-500"}
-                                `}
-                                >
-                                    Case 3
+                        {prop.examples.map((example, index) => (
+                            <div
+                                className='mr-2 items-start mt-2 '
+                                key={example.id}
+                                onClick={() => setActiveTestCaseId(index)}
+                            >
+                                <div className='flex flex-wrap items-center gap-y-4'>
+                                    <div
+                                        className={`font-medium items-center transition-all focus:outline-none inline-flex bg-dark-fill-3 hover:bg-dark-fill-2 relative rounded-lg px-4 py-1 cursor-pointer whitespace-nowrap
+                                            ${activeTestCaseId === index ? 'text-white' : 'text-gray-400'}
+                                        `}>
+                                        Case {index + 1}
+                                    </div>
                                 </div>
                             </div>
-
-                        </div>
+                        ))
+                        }
                     </div>
 
                     <div className='font-semibold my-1 text-xs'>
                         <p className='text-xs font-medium mt-4 text-white'>Input:</p>
                         <div className='w-full cursor-text rounded-lg border px-3 py-[10px] bg-dark-fill-3 border-transparent text-white mt-2'>
-                            input Text
+                            {prop.examples[activeTestCaseId].inputText}
                         </div>
                         <p className='text-xs font-medium mt-4 text-white'>Output:</p>
                         <div className='w-full cursor-text rounded-lg border px-3 py-[10px] bg-dark-fill-3 border-transparent text-white mt-2'>
-                            Output text
+                            {prop.examples[activeTestCaseId].outputText}
                         </div>
                     </div>
                 </div>

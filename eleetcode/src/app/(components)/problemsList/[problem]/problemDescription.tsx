@@ -80,8 +80,7 @@ export default function ProblemDescription({ prop }) {
                                             <strong>Output:</strong> {example.outputText} <br />
                                             {example.explanation &&
                                                 <>
-                                                    <strong>Explanation:</strong>
-                                                    {example.explanation}
+                                                    <strong>Explanation:</strong> {example.explanation}
                                                 </>
                                             }
                                         </pre>

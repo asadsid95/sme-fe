@@ -2,8 +2,8 @@ import { Problem } from "../types/problem";
 import assert from "assert";
 import example from "./images/reverseLL.jpg"
 
-const starterCodeReverseLinkedListJS = `
-/**
+const starterCodeReverseLinkedListJS =
+    `/**
  * Definition for singly-linked list.
  * function ListNode(val, next) {
  *     this.val = (val===undefined ? 0 : val)
