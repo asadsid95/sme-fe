@@ -31,7 +31,7 @@ function ProblemTable() {
                 </thead>
                 <Problems />
             </table>
-            <FormAddProblems />
+            {/* <FormAddProblems /> */}
         </div>
     </RecoilRoot>
     // </>

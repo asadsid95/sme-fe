@@ -1,12 +1,25 @@
 'use client'
 
-import { problems } from "@/app/utils/problems"
+import { problems } from "@/app/utils/problems" // to be removed
 import Link from "next/link"
 import { BsCheckCircle } from 'react-icons/bs'
 import { AiOutlineSolution } from 'react-icons/ai'
 import YouTube from 'react-youtube'
 import { useRecoilValue, useSetRecoilState } from "recoil"
 import { atomSolutionVideo } from "../atoms/atomSolutionVideo"
+import { useEffect } from "react"
+import { collection, getDocs, query } from "firebase/firestore"
+import { firestore } from "@/app/firebase/firebase"
+import { useState } from 'react';
+
+
+/**  
+    Updates log:
+
+    * TODO: Remove hardcoded values for problems & add fetching from Firestore
+
+*/
+
 
 const Problems = () => {
 
@@ -20,6 +33,28 @@ const Problems = () => {
     const closeSolutionModal = () => {
         setSolutionVideoModal((prev) => ({ ...prev, isOpen: false, videoId: '' }))
     }
+
+    const [allProblems, setAllProblems] = useState([])
+
+    useEffect(() => {
+        async function getAllProblems() {
+            const qry = query(collection(firestore, 'problems'))
+            const res = await getDocs(qry)
+            const tmp = []
+
+            res.forEach(doc => {
+                // console.log(doc)
+                console.log(doc.data())
+                tmp.push({ id: doc.id, ...doc.data() })
+
+            })
+
+            setAllProblems(tmp)
+        }
+        console.log("setAllProblems: ", allProblems)
+        getAllProblems()
+    }
+        , [])
 
     return (
         <>
