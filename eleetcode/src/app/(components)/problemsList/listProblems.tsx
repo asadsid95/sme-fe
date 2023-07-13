@@ -8,7 +8,7 @@ import YouTube from 'react-youtube'
 import { useRecoilValue, useSetRecoilState } from "recoil"
 import { atomSolutionVideo } from "../atoms/atomSolutionVideo"
 import { useEffect } from "react"
-import { collection, getDocs, query } from "firebase/firestore"
+import { collection, getDocs, orderBy, query } from "firebase/firestore"
 import { firestore } from "@/app/firebase/firebase"
 import { useState } from 'react';
 
@@ -34,27 +34,29 @@ const Problems = () => {
         setSolutionVideoModal((prev) => ({ ...prev, isOpen: false, videoId: '' }))
     }
 
-    const [allProblems, setAllProblems] = useState([])
+    const problems = useGetAllProblems()
+    // const [allProblems, setAllProblems] = useState([])
 
-    useEffect(() => {
-        async function getAllProblems() {
-            const qry = query(collection(firestore, 'problems'))
-            const res = await getDocs(qry)
-            const tmp = []
+    // useEffect(() => {
+    //     async function getAllProblems() {
+    //         const qry = query(collection(firestore, 'problems'), orderBy('order', 'asc'))
+    //         const res = await getDocs(qry)
+    //         const tmp = []
 
-            res.forEach(doc => {
-                // console.log(doc)
-                console.log(doc.data())
-                tmp.push({ id: doc.id, ...doc.data() })
+    //         res.forEach(doc => {
+    //             // console.log(doc)
+    //             console.log(doc.data())
+    //             tmp.push({ id: doc.id, ...doc.data() }) // this appends to the list an object in which id is created + doc's object is concatenated to the list's object
 
-            })
+    //         })
 
-            setAllProblems(tmp)
-        }
-        console.log("setAllProblems: ", allProblems)
-        getAllProblems()
-    }
-        , [])
+    //         setAllProblems(tmp)
+    //     }
+    //     console.log("setAllProblems: ", allProblems)
+
+    //     getAllProblems()
+    // }
+    //     , [])
 
     return (
         <>
@@ -124,5 +126,31 @@ const Problems = () => {
     )
 }
 
+function useGetAllProblems() {
+
+    const [allProblems, setAllProblems] = useState([])
+
+    useEffect(() => {
+        async function getAllProblems() {
+            const qry = query(collection(firestore, 'problems'), orderBy('order', 'asc'))
+            const res = await getDocs(qry)
+            const tmp = []
+
+            res.forEach(doc => {
+                // console.log(doc)
+                console.log(doc.data())
+                tmp.push({ id: doc.id, ...doc.data() }) // this appends to the list an object in which id is created + doc's object is concatenated to the list's object
+
+            })
+
+            setAllProblems(tmp)
+        }
+        console.log("setAllProblems: ", allProblems)
+
+        getAllProblems()
+    }
+        , [])
+    return allProblems
+}
 
 export default Problems
