@@ -123,11 +123,9 @@ function useGetAllProblems(setLoading) {
             const tmp = []
 
             res.forEach(doc => {
-                console.log(doc.data())
                 tmp.push({ id: doc.id, ...doc.data() }) // this appends to the list an object in which id is created + doc's object is concatenated to the list's object
 
             })
-
             setAllProblems(tmp)
             setLoading(false)
         }

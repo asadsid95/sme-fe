@@ -9,6 +9,7 @@ import { auth } from "@/app/firebase/firebase"
 // import { useRouter } from "next/navigation"
 
 import { toast } from "react-toastify"
+import { useRouter } from "next/navigation"
 
 export default function Login() {
     const [email, setEmail] = useState('')
@@ -30,6 +31,8 @@ export default function Login() {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
+    const router = useRouter()
+
     const loginUser = async (e: any) => {
         e.preventDefault()
 
@@ -45,6 +48,7 @@ export default function Login() {
             // Successful login
             toast('Login successful!', { position: "bottom-center", theme: 'colored', closeOnClick: true, autoClose: 1000, pauseOnHover: false })
             closeModal()
+            router.push('/problemsList')
         }
 
         catch { (error: any) => alert(error.message) }

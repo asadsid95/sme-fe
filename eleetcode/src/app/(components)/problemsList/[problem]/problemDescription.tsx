@@ -2,13 +2,41 @@ import { AiFillDislike, AiFillLike } from "react-icons/ai";
 import { TiStarOutline } from "react-icons/ti";
 
 import { BsCheck2Circle } from "react-icons/bs";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth, firestore } from "@/app/firebase/firebase";
 
+import { useEffect, useState } from 'react'
+import { doc, getDoc } from "firebase/firestore";
 
 type ProblemDescription = {
     props?: string
 }
 
+
+/**  
+ * TODO: Pull user-specific data
+ * 
+ * Showing badges for solved, liked/dislike & starred actions
+ * - for solved, user data has an array of problem id; if prop.id exists in array, show solved badge
+ * - for liked/dislike, user data has an array of problem id; if prop.id exists in array, show liked/dislike badge
+ * - for starred, user data has an array of problem id; if prop.id exists in array, show starred badge
+ *  
+ * Needs: 
+ * - logged in user
+ * 
+*/
+
 export default function ProblemDescription({ prop }) {
+
+    // const [user] = useAuthState(auth)
+    const [data, setUserData] = useState({
+        solved: false,
+        liked: false,
+        disliked: false,
+        starred: false,
+    })
+
+    // const userData = useGetUserData(prop, data)
 
     return <>
         <div className='bg-dark-layer-1'>
@@ -113,4 +141,36 @@ export default function ProblemDescription({ prop }) {
 
 
     </>
+}
+
+/**
+ * pull user based on uid
+ * check if any arrays (solved, liked, disliked, starred) have problem.id in them
+ * 
+ * @param props 
+ * @param user 
+ * @param data 
+ * @returns 
+ */
+function useGetUserData(props, data) {
+
+    const [user] = useAuthState(auth)
+
+    useEffect(() => {
+        async function getUserDoc() {
+            const docRef = doc(firestore, 'users', user!.uid)
+            const qry = await getDoc(docRef)
+            console.log('qry: ', qry)
+
+            if (qry.exists()) {
+                const data = qry.data()
+                console.log('data: ', data.data())
+            }
+
+        }
+        getUserDoc()
+    }
+        , [])
+
+    return
 }
