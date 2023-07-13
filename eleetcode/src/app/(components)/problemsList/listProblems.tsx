@@ -16,7 +16,7 @@ import { useState } from 'react';
 /**  
     Updates log:
 
-    * TODO: Remove hardcoded values for problems & add fetching from Firestore
+    // * TODO(): Remove hardcoded values for problems & add fetching from Firestore
 
 */
 
@@ -106,7 +106,7 @@ const Problems = ({ setLoading }) => {
 
 /**
  * 
- * TODO: Add and mutate loading state 
+//  * TODO: Add and mutate loading state 
  * 
  * @returns problems fetched from Firestore 
  * 
