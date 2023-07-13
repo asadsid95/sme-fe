@@ -117,6 +117,7 @@ function useGetAllProblems(setLoading) {
 
     useEffect(() => {
         async function getAllProblems() {
+            setLoading(true)
             const qry = query(collection(firestore, 'problems'), orderBy('order', 'asc'))
             const res = await getDocs(qry)
             const tmp = []
