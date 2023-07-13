@@ -1,7 +1,7 @@
 'use client'
 
 import { RecoilRoot } from "recoil"
-import ProblemTable from "./table"
+import ProblemTable from "./problemTable"
 import Topbar from "./topbar"
 
 import { ToastContainer } from "react-toastify"

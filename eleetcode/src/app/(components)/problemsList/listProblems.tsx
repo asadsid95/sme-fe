@@ -21,7 +21,7 @@ import { useState } from 'react';
 */
 
 
-const Problems = () => {
+const Problems = ({ setLoading }) => {
 
     const setSolutionVideoModal = useSetRecoilState(atomSolutionVideo)
     const solutionVideoModal = useRecoilValue(atomSolutionVideo)
@@ -34,29 +34,7 @@ const Problems = () => {
         setSolutionVideoModal((prev) => ({ ...prev, isOpen: false, videoId: '' }))
     }
 
-    const problems = useGetAllProblems()
-    // const [allProblems, setAllProblems] = useState([])
-
-    // useEffect(() => {
-    //     async function getAllProblems() {
-    //         const qry = query(collection(firestore, 'problems'), orderBy('order', 'asc'))
-    //         const res = await getDocs(qry)
-    //         const tmp = []
-
-    //         res.forEach(doc => {
-    //             // console.log(doc)
-    //             console.log(doc.data())
-    //             tmp.push({ id: doc.id, ...doc.data() }) // this appends to the list an object in which id is created + doc's object is concatenated to the list's object
-
-    //         })
-
-    //         setAllProblems(tmp)
-    //     }
-    //     console.log("setAllProblems: ", allProblems)
-
-    //     getAllProblems()
-    // }
-    //     , [])
+    const problems = useGetAllProblems(setLoading)
 
     return (
         <>
@@ -126,7 +104,14 @@ const Problems = () => {
     )
 }
 
-function useGetAllProblems() {
+/**
+ * 
+ * TODO: Add and mutate loading state 
+ * 
+ * @returns problems fetched from Firestore 
+ * 
+ */
+function useGetAllProblems(setLoading) {
 
     const [allProblems, setAllProblems] = useState([])
 
@@ -144,12 +129,12 @@ function useGetAllProblems() {
             })
 
             setAllProblems(tmp)
+            setLoading(false)
         }
-        console.log("setAllProblems: ", allProblems)
 
         getAllProblems()
     }
-        , [])
+        , [setLoading])
     return allProblems
 }
 
