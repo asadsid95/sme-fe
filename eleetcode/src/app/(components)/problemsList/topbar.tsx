@@ -97,7 +97,7 @@ export default function Topbar({ problemPage }) {
                     </button>
                 </div>
 
-                {problemPage &&
+                {problemPage && user &&
                     <div>
                         {showTimer ? (
                             <div className='flex items-center space-x-2 bg-dark-fill-3 p-1.5 cursor-pointer rounded hover:bg-dark-fill-2 mr-5'>
