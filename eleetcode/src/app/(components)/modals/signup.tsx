@@ -9,12 +9,16 @@ import { app, auth, firestore } from "@/app/firebase/firebase"
 
 import { toast } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
+import { collection, doc, setDoc } from "firebase/firestore"
 
+/**
+ * TODO: Add user data to Firestore;
+ * - 3 fields are user provided + 7 fields to be added &then sent to Firestore 
+ * - putting firestore adding-data in custom hook and then call it w/in try block
+ * 
+ * @returns modal for registering users
+ */
 export default function Signup() {
-
-    // To do:
-    // 1. validation to prevent empty fields
-    // 2. alert if error from firebase occurs
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
@@ -45,11 +49,23 @@ export default function Signup() {
             }
             // if registration succeeds, close modal
             toast('Registeration successful', { position: "bottom-center", theme: 'dark', autoClose: 1000, pauseOnHover: false })
-            closeModal()
+
+            const totalUser = {
+                displayName: newUser.user.displayName,
+                email: newUser.user.email,
+
+            }
+
+            console.log(totalUser)
+
+            useCreateUserData(totalUser)
+            // closeModal()
         }
         catch (error: any) {
             toast(error.message)
         }
+
+
     }
 
     return <>
@@ -83,4 +99,18 @@ export default function Signup() {
         </div>
     </>
 
+}
+
+function useCreateUserData(newUser) {
+
+    useEffect(() => {
+        async function createUserData() {
+            const q = await setDoc(doc(firestore, 'user'), newUser)
+        }
+        createUserData()
+
+
+    }, [])
+
+    return
 }

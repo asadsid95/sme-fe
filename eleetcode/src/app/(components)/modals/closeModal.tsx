@@ -2,6 +2,11 @@ import { useEffect } from "react"
 import { useSetRecoilState } from "recoil"
 import { modalState } from "../atoms/atomSignLogPass"
 
+/**
+ * Custom hook for closing modal 
+ * 
+ * @returns 
+ */
 function useCloseModal() {
     // const mainDiv = document.getElementById('signup')
     // mainDiv.style.display = 'None'
