@@ -51,15 +51,23 @@ export default function Signup() {
             toast('Registeration successful', { position: "bottom-center", theme: 'dark', autoClose: 1000, pauseOnHover: false })
 
             const totalUser = {
-                displayName: newUser.user.displayName,
+                uid: newUser.user.uid,
+                displayName: name,
                 email: newUser.user.email,
+                createdAt: Date.now(),
+                UpdatedAt: Date.now(),
+                likedProblems: [],
+                dislikedProblems: [],
+                starredProblems: [],
+                solvedProblems: [],
 
             }
+            await setDoc(doc(firestore, 'users', newUser.user.uid), totalUser)
 
             console.log(totalUser)
 
-            useCreateUserData(totalUser)
-            // closeModal()
+            // useCreateUserData(totalUser)
+            closeModal()
         }
         catch (error: any) {
             toast(error.message)
@@ -101,16 +109,20 @@ export default function Signup() {
 
 }
 
-function useCreateUserData(newUser) {
+/**
+ * Attempted to create custom hook but I got an error regarding either using it in a React Component or custom hook, not in another function
+ */
 
-    useEffect(() => {
-        async function createUserData() {
-            const q = await setDoc(doc(firestore, 'user'), newUser)
-        }
-        createUserData()
+// function useCreateUserData(newUser) {
+
+//     useEffect(() => {
+//         async function createUserData() {
+//             const q = await setDoc(doc(firestore, 'user', newUser.user.uid), newUser)
+//         }
+//         createUserData()
 
 
-    }, [])
+//     }, [])
 
-    return
-}
+//     return
+// }
